@@ -5,7 +5,7 @@ template <typename T> //nodo generico
 class Node {
     public:
         T data;
-         Node* next;
+         Node<T>* next;
 
          Node(T data){
             this->data = data;
