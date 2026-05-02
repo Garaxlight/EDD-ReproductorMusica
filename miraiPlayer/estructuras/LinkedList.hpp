@@ -1,5 +1,6 @@
 #pragma once
 #include "Node.hpp"
+#include <stdexcept>
 
 template <typename T>
 
@@ -80,7 +81,7 @@ class LinkedList {
             Node<T>* actual = head;
             int i = 0;
 
-            while(actual !+ nullptr){
+            while(actual != nullptr){
                 if (i == index ) return actual->data;
                 actual = actual->next;
                 i++;

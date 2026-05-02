@@ -1,3 +1,5 @@
+#pragma once
+
 struct Status{
     int currentSongId;
     bool shuffle;

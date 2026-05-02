@@ -4,7 +4,7 @@
 #include <sstream>
 #include "Status.hpp"
 #include "../clases/Song.hpp"
-#include <../estructuras/LinkedList.hpp>
+#include "../estructuras/LinkedList.hpp"
 
 class FileManager{
     public:
@@ -31,7 +31,7 @@ class FileManager{
 
             std::getline(ss, s.nombre, ',');
             std::getline(ss, s.artista, ',');
-            std:getline(ss, s.album, ',');
+            std::getline(ss, s.album, ',');
 
             std::getline(ss, token, ',');
             s.año = std::stoi(token);
