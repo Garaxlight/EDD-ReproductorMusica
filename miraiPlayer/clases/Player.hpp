@@ -13,4 +13,18 @@ class Player {
         Stack<Song> history;
 
 
+
+
+        void playPause();
+        void prevTrack();
+        void nextTrack();
+        void toggleShuffle();
+        void toggleRepeat();
+
+        Player(){
+            song = Song();
+            isPlaying = false;
+            isShuffle = false;
+            repeatMode = 0;
+        }
 };
