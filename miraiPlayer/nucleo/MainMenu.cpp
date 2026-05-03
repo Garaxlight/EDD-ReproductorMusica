@@ -23,6 +23,8 @@ void mostrarMenu(){
     cout << "Ingrese una opción: ";
 }
 
+void SongMenu(LinkedList<Song>& lista, Queue<Song>& cola, Stack<Song>& pila);
+
 int main(){
     // Estructura
 
@@ -67,6 +69,7 @@ int main(){
             case 'A':
             case 'a':
                 cout << "Ver lista actual..." << endl;
+                SongMenu(listaCanciones, reproduccion, historial);
                 break;
             case 'L':
             case 'l':{
