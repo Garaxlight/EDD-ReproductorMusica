@@ -1,10 +1,10 @@
 #include <iostream>
-#include "LinkedList.hpp"
-#include "Queue.hpp"
-#include "Stack.hpp"
+#include "../estructuras/LinkedList.hpp"
+#include "../estructuras/Queue.hpp"
+#include "../estructuras/Stack.hpp"
 #include "../clases/Song.hpp"
 #include "FileManager.hpp"
-#include "Status.hpp"
+#include "../estructuras/Status.hpp"
 
 using namespace std;
 

@@ -5,19 +5,19 @@
 template <typename T>
 class Queue{
     private:
-        Node<T>* front;
+        Node<T>* head;
         Node<T>* back;
 
     public:
     Queue(){
-        front = nullptr;
+        head = nullptr;
         back = nullptr;
     }
 
     void push(T value){
         Node<T>* nuevo = new Node<T>(value);
         if(back == nullptr){
-            front = back = nuevo;
+            head = back = nuevo;
         }else{
             back->next = nuevo;
             back = nuevo;
@@ -26,33 +26,37 @@ class Queue{
     }
 
     void dequeue(){
-        if (front == nullptr) return;
+        if (head == nullptr) return;
 
-        Node<T>* temp = front;
-        front = front->next;
-        if (front == nullptr){
+        Node<T>* temp = head;
+        head = head->next;
+        if (head == nullptr){
             back = nullptr;
         }
         delete temp;
     }
-    void pushFront(T value){
-        Node<T>* nuevo = new Node<T>(value);
-        nuevo -> next = head;
-        head = nuevo;
-        if(back == nullptr){
-            back = nuevo;
-        }
 
-    }
 
     T front(){
-        if (front == nullptr){
+        if (head == nullptr){
             throw std::runtime_error("Queue vacia");
         }
-        return front->data;
+        return head->data;
     }
 
     bool isEmpty(){
-        return front == nullptr;
+        return head == nullptr;
     }
+
+    void pushFront(T value){
+        Node<T>* nuevo = new Node<T>(value);
+        if(head == nullptr){
+            head = back = nuevo;
+        }else{
+            nuevo->next = head;
+            head = nuevo;
+        }
+    }
+
+
 };

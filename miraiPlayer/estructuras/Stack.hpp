@@ -1,38 +1,39 @@
 #pragma once
 #include "Node.hpp"
+#include <stdexcept>
 template <typename T>
 class Stack{
     private:
-        Node<T>* top;
+        Node<T>* topNode;
 
     public:
         Stack(){
-            top = nullptr;
+            topNode = nullptr;
         }
 
         void push(T value){
             Node<T>* nuevo = new Node<T>(value);
-            nuevo->next = top;
-            top = nuevo;
+            nuevo->next = topNode;
+            topNode = nuevo;
         }
 
         void pop(){
-            if (top==nullptr){return;}
+            if (topNode==nullptr){return;}
 
-            Node<T>* temp = top;
-            top = top->next;
+            Node<T>* temp = topNode;
+            topNode = topNode->next;
             delete temp;
         }
 
         T top(){
-            if (top == nullptr){
+            if (topNode == nullptr){
                 throw std::runtime_error("Stack vacio");
 
             }
-            return top->data;
+            return topNode->data;
         }
 
         bool isEmpty(){
-            return top == nullptr;
+            return topNode == nullptr;
         }
 };

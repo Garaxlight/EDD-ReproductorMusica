@@ -37,8 +37,8 @@ void Player::nextTrack(){
 
 void Player::prevTrack() {
 
-    queue.pushFront(song); //tengo que agregar luego un metodo mas a queue para manejar el orden, un pushFront, sino se añadira
-    // en el lugar incorrecto de la cola
+    if (history.isEmpty()) return;
+    queue.pushFront(song);
     song = history.top();
     history.pop();
     isPlaying = true;
