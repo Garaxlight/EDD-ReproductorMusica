@@ -35,7 +35,15 @@ class Queue{
         }
         delete temp;
     }
+    void pushFront(T value){
+        Node<T>* nuevo = new Node<T>(value);
+        nuevo -> next = head;
+        head = nuevo;
+        if(back == nullptr){
+            back = nuevo;
+        }
 
+    }
 
     T front(){
         if (front == nullptr){
