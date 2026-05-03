@@ -14,7 +14,7 @@ class Queue{
         back = nullptr;
     }
 
-    void push(T value){
+    void enqueue(T value){
         Node<T>* nuevo = new Node<T>(value);
         if(back == nullptr){
             head = back = nuevo;
