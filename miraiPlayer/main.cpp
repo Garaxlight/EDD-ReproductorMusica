@@ -40,6 +40,14 @@ int main(){
     Status status = FileManager::loadStatus("status.cfg");
     player.isShuffle = status.shuffle;
     player.repeatMode = status.repeatMode;
+    Node<Song>* actual = listaCanciones.getHead();
+    while(actual != nullptr){
+        if(actual ->data.id == status.currentSongId){
+            player.song = actual ->data;
+            break;
+        }
+        actual = actual->next;
+    }
 
     bool ejecutando = true;
     char opcion;
