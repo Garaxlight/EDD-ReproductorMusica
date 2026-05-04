@@ -1,4 +1,7 @@
 #include "Player.hpp"
+#include <iostream>
+
+using namespace std;
 
 void Player::playPause(){
     isPlaying = !isPlaying;
@@ -26,20 +29,36 @@ void Player::toggleRepeat(){
 }
 
 void Player::nextTrack(){
-
-    //luego tengo que hacer el caso de si la cola esta vacia al llamar la funcion.
+    if (repeatMode == 1){
+        isPlaying = true;
+        return;
+    }
+    
+    if (queue.isEmpty()){
+        cout << "La cola de reproducción está vacía" << endl;
+        return;
+    }
 
     history.push(song);
+
     song = queue.front();
+
     queue.dequeue();
+
     isPlaying = true;  
 }
 
 void Player::prevTrack() {
 
-    if (history.isEmpty()) return;
+    if (history.isEmpty()){
+        cout << "No hay historial." << endl;
+        return;
+    } 
     queue.pushFront(song);
+
     song = history.top();
+
     history.pop();
+
     isPlaying = true;
 }

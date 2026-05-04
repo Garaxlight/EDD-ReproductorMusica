@@ -58,5 +58,8 @@ class Queue{
         }
     }
 
+    Node<T>* getHead(){
+        return head;
+    }
 
 };

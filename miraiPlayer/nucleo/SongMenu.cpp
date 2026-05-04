@@ -32,6 +32,7 @@ void menuCanciones(LinkedList<Song>& lista,
     bool enMenu = true;
 
     while(enMenu){
+        mostrarCanciones(lista);
         cout << "\n=== OPCIONES ===" << endl;
         cout << "R<num> - Reproducir canción" << endl;
         cout << "A<num> - Agregar canción a cola" << endl;
@@ -45,13 +46,22 @@ void menuCanciones(LinkedList<Song>& lista,
 
         switch (opcion){
             case 'R':{
+
+                if (input.length() < 2){
+                    cout << "Debe ingresar un índice válido." << endl;
+                    break;
+                }
                 int index = stoi(input.substr(1)) - 1;
 
                 try{
                     Song s = lista.getAt(index);
+
+                    Song anterior = player.song;
+
                     player.song = s;
                     player.isPlaying = true;
-                    cout << "Reproduciendo: " << s.nombre << " - " << s.artista << endl;
+                    cout << "Reproduciendo: " << s.nombre 
+                    << " - " << s.artista << endl;
 
                     while(!player.queue.isEmpty()){
                         player.queue.dequeue();
@@ -60,8 +70,10 @@ void menuCanciones(LinkedList<Song>& lista,
                     while (!player.history.isEmpty()){
                         player.history.pop();
                     }
-
-                    player.history.push(s);
+                    if (anterior.id != -1){
+                        player.history.push(anterior);
+                    }
+                    
                 }catch (...){
                     cout << "Índice no válido." << endl;
                 }
