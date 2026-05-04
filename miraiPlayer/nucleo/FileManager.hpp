@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream> 
 #include <sstream>
-#include "Status.hpp"
+#include "../estructuras/Status.hpp"
 #include "../clases/Song.hpp"
 #include "../estructuras/Node.hpp"
 #include "../estructuras/LinkedList.hpp"

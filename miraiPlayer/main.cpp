@@ -1,12 +1,14 @@
 #include <iostream>
 #include <string>
-#include "../estructuras/LinkedList.hpp"
-#include "../estructuras/Queue.hpp"
-#include "../estructuras/Stack.hpp"
-#include "../clases/Song.hpp"
-#include "../nucleo/FileManager.hpp"
-#include "../estructuras/Status.hpp"
-#include "../clases/Player.hpp"
+#include "estructuras/LinkedList.hpp"
+#include "estructuras/Queue.hpp"
+#include "estructuras/Stack.hpp"
+#include "clases/Song.hpp"
+#include "nucleo/FileManager.hpp"
+#include "estructuras/Status.hpp"
+#include "clases/Player.hpp"
+#include "nucleo/PlaylistMenu.hpp"
+#include "nucleo/SongMenu.hpp"
 
 using namespace std;
 
@@ -25,7 +27,7 @@ void mostrarMenu(){
     cout << "Ingrese una opción: ";
 }
 
-void SongMenu(LinkedList<Song>& lista, Player& player);
+
 void mostrarCanciones(LinkedList<Song>& lista);
 void menuCanciones(LinkedList<Song>& lista, Player& player);
 
@@ -95,12 +97,11 @@ int main(){
             case 'A':
             case 'a':
                 cout << "Ver lista actual..." << endl;
-                SongMenu(listaCanciones, player);
+                PlaylistMenu(player);
                 break;
             case 'L':
             case 'l':{
-                mostrarCanciones(listaCanciones);
-                menuCanciones(listaCanciones, player);
+                SongMenu(listaCanciones, player);
                 break;
             }
             case 'X':

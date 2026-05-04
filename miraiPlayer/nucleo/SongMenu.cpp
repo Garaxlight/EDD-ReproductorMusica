@@ -150,3 +150,8 @@ void menuCanciones(LinkedList<Song>& lista,
         }
     }
 }
+
+void SongMenu(LinkedList<Song>& lista, Player& player) {
+    mostrarCanciones(lista);
+    menuCanciones(lista, player);
+}

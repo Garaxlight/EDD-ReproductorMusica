@@ -7,12 +7,16 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "main.cpp",
+                "clases/Song.cpp",
+                "clases/Player.cpp",
+                "nucleo/SongMenu.cpp",
+                "nucleo/PlaylistMenu.cpp",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "main.exe"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${workspaceFolder}\\miraiPlayer"
             },
             "problemMatcher": [
                 "$gcc"
