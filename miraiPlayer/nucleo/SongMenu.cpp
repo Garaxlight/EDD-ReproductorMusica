@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
-#include "LinkedList.hpp"
-#include "Queue.hpp"
-#include "Stack.hpp"
-#include "Song.hpp"
+#include "../estructuras/LinkedList.hpp"
+#include "../estructuras/Queue.hpp"
+#include "../estructuras/Stack.hpp"
+#include "../clases/Song.hpp"
+#include "../clases/Player.hpp"
+#include "../nucleo/FileManager.hpp"
 
 using namespace std;
 
@@ -25,7 +27,7 @@ void mostrarCanciones(LinkedList<Song>& lista){
 
 
 void menuCanciones(LinkedList<Song>& lista, 
-    Queue<Song>& cola, Stack<Song>& historial){
+    Player& player){
     string input;
     bool enMenu = true;
 
@@ -47,19 +49,19 @@ void menuCanciones(LinkedList<Song>& lista,
 
                 try{
                     Song s = lista.getAt(index);
-                    cout << "Reproduciendo: " 
-                    << s.nombre << " - " << s.artista << endl;
+                    player.song = s;
+                    player.isPlaying = true;
+                    cout << "Reproduciendo: " << s.nombre << " - " << s.artista << endl;
 
-                    while(!cola.isEmpty()){
-                        cola.dequeue();
+                    while(!player.queue.isEmpty()){
+                        player.queue.dequeue();
                     }
 
-                    while (!historial.isEmpty()){
-                        historial.pop();
+                    while (!player.history.isEmpty()){
+                        player.history.pop();
                     }
 
-                    //setear como cancion actual
-                    historial.push(s);
+                    player.history.push(s);
                 }catch (...){
                     cout << "Índice no válido." << endl;
                 }
@@ -72,7 +74,7 @@ void menuCanciones(LinkedList<Song>& lista,
 
                 try{
                     Song s = lista.getAt(index);
-                    cola.enqueue(s);
+                    player.queue.enqueue(s);
                     cout << "Canción agregada a la cola." << endl;
                 }catch (...){
                     cout << "Índice no válido." << endl;
@@ -108,6 +110,7 @@ void menuCanciones(LinkedList<Song>& lista,
                 nueva.id = lista.size() + 1;
 
                 lista.insertEnd(nueva);
+                FileManager::saveMusic("musicSource.txt", lista);
 
                 cout << "Canción agregada: " << endl;
                 break;
@@ -119,6 +122,7 @@ void menuCanciones(LinkedList<Song>& lista,
 
                 try{
                     lista.removeAt(index);
+                    FileManager::saveMusic("musicSource.txt", lista);
                     cout << "Canción eliminada." << endl;
                 }catch (...){
                     cout << "Índice no válido." << endl;

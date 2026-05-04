@@ -4,6 +4,7 @@
 #include <sstream>
 #include "Status.hpp"
 #include "../clases/Song.hpp"
+#include "../estructuras/Node.hpp"
 #include "../estructuras/LinkedList.hpp"
 
 class FileManager{
@@ -94,6 +95,21 @@ class FileManager{
         file << "SHUFFLE=" << (s.shuffle ? "1" : "0") << std::endl;
         file << "REPEAT=" << s.repeatMode << std::endl;
 
+        file.close();
+    }
+
+    static void saveMusic(const std::string& filename, LinkedList<Song>& lista){
+        std::ofstream file(filename);
+        
+        if(!file.is_open()) return;
+        
+        Node<Song>* actual = lista.getHead();
+        
+        while(actual != nullptr){
+            file << actual->data.toString(',') << std::endl;
+            actual = actual->next;
+        }
+        
         file.close();
     }
 };

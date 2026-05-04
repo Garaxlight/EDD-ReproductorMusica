@@ -25,7 +25,9 @@ void mostrarMenu(){
     cout << "Ingrese una opción: ";
 }
 
-void SongMenu(LinkedList<Song>& lista, Queue<Song>& cola, Stack<Song>& pila);
+void SongMenu(LinkedList<Song>& lista, Player& player);
+void mostrarCanciones(LinkedList<Song>& lista);
+void menuCanciones(LinkedList<Song>& lista, Player& player);
 
 int main(){
     // Estructura
@@ -85,21 +87,12 @@ int main(){
             case 'A':
             case 'a':
                 cout << "Ver lista actual..." << endl;
-                SongMenu(listaCanciones, player.queue, player.history);
+                SongMenu(listaCanciones, player);
                 break;
             case 'L':
             case 'l':{
-                cout << "\n=== CANCIONES ===\n";
-
-                Node<Song>* actual = listaCanciones.getHead();
-                int i = 1;
-
-                while (actual != nullptr){
-                    cout << i << ". " << actual->data.nombre 
-                    << " - " << actual->data.artista << endl;
-                    actual = actual->next;
-                    i++;
-                }
+                mostrarCanciones(listaCanciones);
+                menuCanciones(listaCanciones, player);
                 break;
             }
             case 'X':
