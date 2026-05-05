@@ -13,7 +13,7 @@
 using namespace std;
 
 void mostrarMenu(){
-    cout << "=== Reproductor de Música ===" << endl;
+    cout << "=== Reproductor de Musica ===" << endl;
     cout << "W - Reproducir/Pausar" << endl;
     cout << "Q - Pista Anterior" << endl;
     cout << "E - Pista Siguiente" << endl;
@@ -24,12 +24,10 @@ void mostrarMenu(){
     cout << "X - Salir" << endl;
     cout << "============================" << endl;
 
-    cout << "Ingrese una opción: ";
+    cout << "Ingrese una opcion: ";
 }
 
 
-void mostrarCanciones(LinkedList<Song>& lista);
-void menuCanciones(LinkedList<Song>& lista, Player& player);
 
 int main(){
     // Estructura
@@ -38,7 +36,7 @@ int main(){
     LinkedList<Song> listaCanciones;
 
     // Cargar datos
-    FileManager::loadMusic("musicSource.txt", listaCanciones);
+    FileManager::loadMusic("music_source.txt", listaCanciones);
     Status status = FileManager::loadStatus("status.cfg");
     player.isShuffle = status.shuffle;
     player.repeatMode = status.repeatMode;
@@ -92,7 +90,7 @@ int main(){
             case 'R':
             case 'r':
             player.toggleRepeat();
-                 cout << "Modo de repetición: " << (player.repeatMode == 0 ? "OFF" : player.repeatMode == 1 ? "Repetir 1" : "Repetir todas") << endl;
+                 cout << "Modo de repeticion: " << (player.repeatMode == 0 ? "OFF" : player.repeatMode == 1 ? "Repetir 1" : "Repetir todas") << endl;
                 break;
             case 'A':
             case 'a':
@@ -115,7 +113,7 @@ int main(){
                 cout << "Saliendo del reproductor..." << endl;
                 break;
             default:
-                cout << "Opción no válida. Intente nuevamente\n" << endl;
+                cout << "Opción no valida. Intente nuevamente\n" << endl;
         }
     }
 
