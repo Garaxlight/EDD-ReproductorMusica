@@ -48,7 +48,7 @@ void menuCanciones(LinkedList<Song>& lista,
             case 'R':{
 
                 if (input.length() < 2){
-                    cout << "Debe ingresar un índice válido." << endl;
+                    cout << "Debe ingresar un indice valido." << endl;
                     break;
                 }
                 int index = stoi(input.substr(1)) - 1;
@@ -75,7 +75,7 @@ void menuCanciones(LinkedList<Song>& lista,
                     }
                     
                 }catch (...){
-                    cout << "Índice no válido." << endl;
+                    cout << "Indice no valido." << endl;
                 }
                 break;
             }
@@ -87,9 +87,9 @@ void menuCanciones(LinkedList<Song>& lista,
                 try{
                     Song s = lista.getAt(index);
                     player.queue.enqueue(s);
-                    cout << "Canción agregada a la cola." << endl;
+                    cout << "Cancion agregada a la cola." << endl;
                 }catch (...){
-                    cout << "Índice no válido." << endl;
+                    cout << "Indice no valido." << endl;
                 }
                 break;
             }
@@ -112,11 +112,11 @@ void menuCanciones(LinkedList<Song>& lista,
                 cout << "Ingrese año: ";
                 cin >> nueva.año;
 
-                cout << "Ingrese duración (segundos): ";
+                cout << "Ingrese duracion (segundos): ";
                 cin >> nueva.duracion;
 
                 cin.ignore();
-                cout << "Ingrese ubicación: ";
+                cout << "Ingrese ubicacion: ";
                 getline(cin, nueva.ubicacion);
 
                 nueva.id = lista.size() + 1;
@@ -124,7 +124,7 @@ void menuCanciones(LinkedList<Song>& lista,
                 lista.insertEnd(nueva);
                 FileManager::saveMusic("musicSource.txt", lista);
 
-                cout << "Canción agregada: " << endl;
+                cout << "Cancion agregada: " << endl;
                 break;
             }
 
@@ -135,9 +135,9 @@ void menuCanciones(LinkedList<Song>& lista,
                 try{
                     lista.removeAt(index);
                     FileManager::saveMusic("musicSource.txt", lista);
-                    cout << "Canción eliminada." << endl;
+                    cout << "Cancion eliminada." << endl;
                 }catch (...){
-                    cout << "Índice no válido." << endl;
+                    cout << "Indice no valido." << endl;
                 }
                 break;
             }
@@ -146,7 +146,7 @@ void menuCanciones(LinkedList<Song>& lista,
                 enMenu = false;
                 break;
             default:
-                cout << "Opción no válida, intente de nuevo." << endl;
+                cout << "Opcion no valida, intente de nuevo." << endl;
         }
     }
 }

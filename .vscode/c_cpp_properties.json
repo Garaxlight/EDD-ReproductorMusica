@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/miraiPlayer/estructuras",
-                "${workspaceFolder}/miraiPlayer/clases`",
+                "${workspaceFolder}/miraiPlayer/clases",
                 "${workspaceFolder}/miraiPlayer/nucleo"
             ],
             "defines": [

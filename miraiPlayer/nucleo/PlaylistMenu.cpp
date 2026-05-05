@@ -13,13 +13,13 @@ void PlaylistMenu(Player& player){
         cout << "Actual: " << player.song.nombre << " - " 
         << player.song.artista << endl;
 
-        cout << "\nLista de reproducción actual:" << endl;
+        cout << "\nLista de reproduccion actual:" << endl;
 
         Node<Song>* actual = player.queue.getHead();
         int i = 1;
 
         if (player.queue.isEmpty()){
-            cout << "Lista vacía." << endl;
+            cout << "Lista vacia." << endl;
         }else{
             while (actual != nullptr){
                 cout << i << ". " << actual->data.nombre 
@@ -30,9 +30,9 @@ void PlaylistMenu(Player& player){
         }
 
         cout << "\nOpciones:" << endl;
-        cout << "S<num> - Saltar a la canción" << endl;
+        cout << "S<num> - Saltar a la cancion" << endl;
         cout << "V - Volver" << endl;
-        cout << "Ingrese una opción: ";
+        cout << "Ingrese una opcion: ";
 
         cin >> input;
         char opcion = toupper(input[0]);
@@ -49,7 +49,7 @@ void PlaylistMenu(Player& player){
                     }
 
                     if (temp == nullptr){
-                        throw runtime_error("Índice inválido");
+                        throw runtime_error("Indice invalido");
                     }
 
                     player.song = temp->data;
@@ -63,7 +63,7 @@ void PlaylistMenu(Player& player){
                     enMenu = false;
                 }
                 catch (...){
-                    cout << "Índice inválido" << endl;
+                    cout << "Indice invalido" << endl;
                 }
                 break;
             }
@@ -73,7 +73,7 @@ void PlaylistMenu(Player& player){
                 break;
 
             default:
-                cout << "Opción inválida" << endl;
+                cout << "Opcion invalida" << endl;
         }
     }
 }

@@ -35,7 +35,7 @@ void Player::nextTrack(){
     }
     
     if (queue.isEmpty()){
-        cout << "La cola de reproducción está vacía" << endl;
+        cout << "La cola de reproducción esta vacia" << endl;
         return;
     }
 
