@@ -38,9 +38,9 @@ void Player::nextTrack(){
         cout << "La cola de reproducción esta vacia" << endl;
         return;
     }
-
-    history.push(song);
-
+    if(song.id != -1){
+        history.push(song);
+    }
     song = queue.front();
 
     queue.dequeue();
@@ -54,7 +54,9 @@ void Player::prevTrack() {
         cout << "No hay historial." << endl;
         return;
     } 
-    queue.pushFront(song);
+    if (song.id != -1){
+        queue.pushFront(song);
+    }
 
     song = history.top();
 
