@@ -20,7 +20,97 @@ Simula la reproducción y gestión de canciones desde un archivo local, implemen
 
 ## Diagrama de Clases
 
-- Pendiente
+```mermaid
+classDiagram
+    class Song {
+        -int id
+        -string nombre
+        -string artista
+        -string album
+        -int año
+        -int duracion
+        -string ubicacion
+        +Song()
+        +mostrar()
+        +toString(separador) string
+    }
+
+    class Player {
+        -Song song
+        -bool isPlaying
+        -bool isShuffle
+        -int repeatMode
+        -Queue~Song~ queue
+        -Stack~Song~ history
+        +Player()
+        +playPause()
+        +prevTrack()
+        +nextTrack()
+        +toggleShuffle()
+        +toggleRepeat()
+    }
+
+    class Node~T~ {
+        -T data
+        -Node~T~* next
+        +Node(data)
+    }
+
+    class LinkedList~T~ {
+        -Node~T~* head
+        +LinkedList()
+        +insertEnd(data)
+        +insertFront(data)
+        +removeFirst()
+        +removeAt(index)
+        +getAt(index) T
+        +size() int
+        +getHead() Node~T~*
+    }
+
+    class Queue~T~ {
+        -Node~T~* head
+        -Node~T~* back
+        +Queue()
+        +enqueue(value)
+        +dequeue()
+        +front() T
+        +isEmpty() bool
+        +pushFront(value)
+        +getHead() Node~T~*
+    }
+
+    class Stack~T~ {
+        -Node~T~* topNode
+        +Stack()
+        +push(value)
+        +pop()
+        +top() T
+        +isEmpty() bool
+    }
+
+    class Status {
+        +int currentSongId
+        +bool shuffle
+        +int repeatMode
+    }
+
+    class FileManager {
+        +static loadMusic(filename, lista)
+        +static loadStatus(filename) Status
+        +static saveStatus(filename, status)
+    }
+
+    Song --> Player : contiene
+    Song --> LinkedList~T~ : almacena en
+    Player --> Queue~Song~ : contiene
+    Player --> Stack~Song~ : contiene
+    LinkedList~T~ --> Node~T~ : usa
+    Queue~T~ --> Node~T~ : usa
+    Stack~T~ --> Node~T~ : usa
+    LinkedList~T~ --> FileManager : carga datos
+    FileManager --> Status : carga/guarda
+```
 
 ---
 
