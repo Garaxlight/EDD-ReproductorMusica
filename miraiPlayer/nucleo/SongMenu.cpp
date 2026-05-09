@@ -34,12 +34,12 @@ void menuCanciones(LinkedList<Song>& lista,
     while(enMenu){
         mostrarCanciones(lista);
         cout << "\n=== OPCIONES ===" << endl;
-        cout << "R<num> - Reproducir canción" << endl;
-        cout << "A<num> - Agregar canción a cola" << endl;
-        cout << "N - Nueva canción" << endl;
-        cout << "D<num> - Eliminar canción" << endl;
+        cout << "R<num> - Reproducir cancion" << endl;
+        cout << "A<num> - Agregar cancion a cola" << endl;
+        cout << "N - Nueva cancion" << endl;
+        cout << "D<num> - Eliminar cancion" << endl;
         cout << "V - Volver" << endl;
-        cout << "Ingrese una opción: ";
+        cout << "Ingrese una opcion: ";
 
         cin >> input;
         char opcion = toupper(input[0]);
@@ -152,6 +152,5 @@ void menuCanciones(LinkedList<Song>& lista,
 }
 
 void SongMenu(LinkedList<Song>& lista, Player& player) {
-    mostrarCanciones(lista);
     menuCanciones(lista, player);
 }

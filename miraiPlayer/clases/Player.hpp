@@ -22,8 +22,8 @@ class Player {
         void toggleRepeat();
 
         Player(){
-            song.id = -1;
             song = Song();
+            song.id = -1;
             isPlaying = false;
             isShuffle = false;
             repeatMode = 0;

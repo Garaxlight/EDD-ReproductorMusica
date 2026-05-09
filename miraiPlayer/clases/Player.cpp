@@ -4,6 +4,10 @@
 using namespace std;
 
 void Player::playPause(){
+    if (song.id == -1 && queue.isEmpty()){
+        cout << "No hay canciones en la cola" << endl;
+        return;
+    }
     isPlaying = !isPlaying;
 }
 
@@ -35,12 +39,28 @@ void Player::nextTrack(){
     }
     
     if (queue.isEmpty()){
-        cout << "La cola de reproducción esta vacia" << endl;
+
+        if (repeatMode == 2){
+
+            if (song.id != -1){
+                history.push(song);
+            }
+            
+            while(!history.isEmpty()){
+                queue.pushFront(history.top());
+                history.pop();
+            }
+        }else{
+
+        
+        cout << "La cola de reproduccion esta vacia" << endl;
         return;
+        }
     }
     if(song.id != -1){
         history.push(song);
     }
+
     song = queue.front();
 
     queue.dequeue();
