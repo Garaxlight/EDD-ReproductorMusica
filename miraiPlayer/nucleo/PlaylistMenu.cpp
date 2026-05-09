@@ -4,6 +4,7 @@
 using namespace std;
 
 void PlaylistMenu(Player& player){
+    system("cls");
     bool enMenu = true;
     string input;
 
@@ -39,6 +40,7 @@ void PlaylistMenu(Player& player){
 
         switch (opcion){
             case 'S':{
+                system("cls");
                 try{
                     int index = stoi(input.substr(1)) - 1;
 
@@ -69,6 +71,7 @@ void PlaylistMenu(Player& player){
             }
 
             case 'V':
+            system("cls");
                 enMenu = false;
                 break;
 

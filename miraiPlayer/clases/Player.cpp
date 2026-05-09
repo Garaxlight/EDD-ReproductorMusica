@@ -4,6 +4,7 @@
 using namespace std;
 
 void Player::playPause(){
+    system("cls");
     if (song.id == -1 && queue.isEmpty()){
         cout << "No hay canciones en la cola" << endl;
         return;
@@ -12,11 +13,15 @@ void Player::playPause(){
 }
 
 void Player::toggleShuffle(){
+    system("cls");
+
     isShuffle = !isShuffle;
 }
 
 void Player::toggleRepeat(){
+    system("cls");
     switch(repeatMode){
+        
 
         case 0:
             repeatMode = 1;
@@ -33,6 +38,7 @@ void Player::toggleRepeat(){
 }
 
 void Player::nextTrack(){
+    system("cls");
     if (repeatMode == 1){
         isPlaying = true;
         return;
@@ -45,7 +51,7 @@ void Player::nextTrack(){
             if (song.id != -1){
                 history.push(song);
             }
-            
+
             while(!history.isEmpty()){
                 queue.pushFront(history.top());
                 history.pop();
@@ -69,6 +75,7 @@ void Player::nextTrack(){
 }
 
 void Player::prevTrack() {
+    system("cls");
 
     if (history.isEmpty()){
         cout << "No hay historial." << endl;

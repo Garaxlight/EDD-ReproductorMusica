@@ -28,58 +28,59 @@ void mostrarCanciones(LinkedList<Song>& lista){
 
 void menuCanciones(LinkedList<Song>& lista, 
     Player& player){
-    string input;
-    bool enMenu = true;
+        
+        string input;
+        bool enMenu = true;
 
-    while(enMenu){
-        mostrarCanciones(lista);
-        cout << "\n=== OPCIONES ===" << endl;
-        cout << "R<num> - Reproducir cancion" << endl;
-        cout << "A<num> - Agregar cancion a cola" << endl;
-        cout << "N - Nueva cancion" << endl;
-        cout << "D<num> - Eliminar cancion" << endl;
-        cout << "V - Volver" << endl;
-        cout << "Ingrese una opcion: ";
+        while(enMenu){
+            system("cls");
+            mostrarCanciones(lista);
+            cout << "\n=== OPCIONES ===" << endl;
+            cout << "R<num> - Reproducir cancion" << endl;
+            cout << "A<num> - Agregar cancion a cola" << endl;
+            cout << "N - Nueva cancion" << endl;
+            cout << "D<num> - Eliminar cancion" << endl;
+            cout << "V - Volver" << endl;
+            cout << "Ingrese una opcion: ";
 
-        cin >> input;
-        char opcion = toupper(input[0]);
+            cin >> input;
+            char opcion = toupper(input[0]);
 
-        switch (opcion){
-            case 'R':{
+            switch (opcion){
+                case 'R':{
 
-                if (input.length() < 2){
-                    cout << "Debe ingresar un indice valido." << endl;
-                    break;
-                }
-                int index = stoi(input.substr(1)) - 1;
-
-                try{
-                    Song s = lista.getAt(index);
-
-                    Song anterior = player.song;
-
-                    player.song = s;
-                    player.isPlaying = true;
-                    cout << "Reproduciendo: " << s.nombre 
-                    << " - " << s.artista << endl;
-
-                    while(!player.queue.isEmpty()){
-                        player.queue.dequeue();
+                    if (input.length() < 2){
+                        cout << "Debe ingresar un indice valido." << endl;
+                        break;
                     }
+                    int index = stoi(input.substr(1)) - 1;
 
-                    while (!player.history.isEmpty()){
-                        player.history.pop();
-                    }
-                    if (anterior.id != -1){
-                        player.history.push(anterior);
-                    }
+                    try{
+                        Song s = lista.getAt(index);
+
+                        Song anterior = player.song;
+
+                        player.song = s;
+                        player.isPlaying = true;
+                        cout << "Reproduciendo: " << s.nombre 
+                        << " - " << s.artista << endl;
+
+                        while(!player.queue.isEmpty()){
+                            player.queue.dequeue();
+                        }
+
+                        while (!player.history.isEmpty()){
+                            player.history.pop();
+                        }
+                        if (anterior.id != -1){
+                            player.history.push(anterior);
+                        }
                     
-                }catch (...){
-                    cout << "Indice no valido." << endl;
-                }
+                    }catch (...){
+                        cout << "Indice no valido." << endl;
+                    }
                 break;
             }
-
 
             case 'A':{
                 int index = stoi(input.substr(1)) - 1;
@@ -143,6 +144,7 @@ void menuCanciones(LinkedList<Song>& lista,
             }
 
             case 'V':
+                system("cls");
                 enMenu = false;
                 break;
             default:
